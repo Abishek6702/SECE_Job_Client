@@ -11,12 +11,14 @@ const DashboardLayout = ({
 }) => {
   return (
     <div className="flex h-screen bg-white font-sans overflow-hidden">
-      {/* Left Sidebar */}
+      <div className="hidden md:block">
+        {/* Left Sidebar */}
       <Sidebar
         sidebarItems={sidebarItems}
         activeTab={activeTab}
         setActiveTab={setActiveTab}
       />
+      </div>
 
       {/* Main Right Section */}
       <div className="flex flex-1 flex-col min-w-0">

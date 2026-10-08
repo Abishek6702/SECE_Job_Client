@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { Activity, Users, Briefcase, Building2, MessageSquare, Layers, Settings } from "lucide-react";
+import { useEffect, useState } from "react";
+import { Activity, Users, Briefcase, Building2, MessageSquare, Layers } from "lucide-react";
 import { jwtDecode } from "jwt-decode";
 import DashboardLayout from "../../components/Layout/DashboardLayout";
 
@@ -11,7 +11,7 @@ import JobsTab from "./UserDashboard/JobsTab";
 import CompaniesTab from "./UserDashboard/CompaniesTab";
 import MessagesTab from "./UserDashboard/MessagesTab";
 import ServicesTab from "./UserDashboard/ServicesTab";
-import SettingsTab from "./UserDashboard/SettingsTab";
+
 
 const UserDashboard = () => {
   const [userEmail, setUserEmail] = useState("John Doe");

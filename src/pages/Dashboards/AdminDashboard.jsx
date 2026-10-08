@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Shield, Users, CheckSquare, FileText } from "lucide-react";
+import { useState } from "react";
+import { Users, CheckSquare, FileText } from "lucide-react";
 import DashboardLayout from "../../components/Layout/DashboardLayout";
 
 // Import separate tab components

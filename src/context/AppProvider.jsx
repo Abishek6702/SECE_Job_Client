@@ -1,5 +1,4 @@
-import React, { createContext, useContext, useEffect, useState } from "react";
-import axios from "axios";
+import { createContext, useContext, useEffect, useState } from "react";
 import { jwtDecode } from "jwt-decode";
 
 const AppContext = createContext();
@@ -24,7 +23,7 @@ export const AppProvider = ({ children }) => {
 
   // Fetch jobs on component mount with valid user ID
   useEffect(() => {
-    const userId = getUserIdFromToken();
+    getUserIdFromToken();
   }, []);
 
   const value = {

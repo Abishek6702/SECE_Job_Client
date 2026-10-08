@@ -33,7 +33,8 @@ export function autoRedirectBasedOnToken(navigate) {
       } else {
         localStorage.removeItem("token");
       }
-    } catch (e) {
+    } catch (error) {
+      console.error(error);
       localStorage.removeItem("token");
     }
   }

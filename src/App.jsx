@@ -1,15 +1,10 @@
-import React, { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
-import { jwtDecode } from "jwt-decode";
 
 // Common Components
 import { ToastContainer } from "react-toastify";
 
 // Protections
 import ProtectedRoute from "./components/ProtectedRoute";
-
-
-// Layout
 
 // Auth Urls
 import SignupForm from "./pages/Auth/Signup";
@@ -24,19 +19,6 @@ import UserDashboard from "./pages/Dashboards/UserDashboard";
 import EmployerDashboard from "./pages/Dashboards/EmployerDashboard";
 
 function App() {
-  const [currentUserId, setCurrentUserId] = useState(null);
-
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (token) {
-      try {
-        const decoded = jwtDecode(token);
-        setCurrentUserId(decoded.userId || decoded.id || null);
-      } catch (error) {
-        console.error("Failed to decode token:", error);
-      }
-    }
-  }, []);
 
   return (
     <>
@@ -68,8 +50,6 @@ function App() {
           }
         />
 
-        {/* PROTECTED ROUTES */}
-        {/* Protected routes make the navigate after closing and opening tabs if token expired navigate to main page */}
         <Route
           path="/employee-dashboard"
           element={
