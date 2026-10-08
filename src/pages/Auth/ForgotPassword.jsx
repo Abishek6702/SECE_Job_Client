@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import image from "../../assets/forgotpassword.png";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useState } from "react";
+
+import { useNavigate } from "react-router-dom";
 import { useAppContext } from "../../context/AppProvider";
 import logo from "../../assets/logo.svg";
 

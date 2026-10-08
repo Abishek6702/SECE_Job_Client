@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import login_img from "../../assets/login.png";
+import { useEffect, useState } from "react";
+
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Eye, EyeOff, UserRound, Building2 } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from 'react-toastify';
@@ -23,7 +23,7 @@ const SignupForm = () => {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [userType, setUserType] = useState("candidate");
   const [errors, setErrors] = useState({});
-  const [button, setButton] = useState("signup");
+
   const [showOtpField, setShowOtpField] = useState(false);
   const [otp, setOtp] = useState("");
   const [verifyEmail, setVerifyEmail] = useState("");
