@@ -8,7 +8,7 @@ import { Eye, EyeOff } from "lucide-react";
 import { toast } from "react-toastify";
 
 function autoRedirectBasedOnToken(navigate) {
-  const token = localStorage.getItem("token");
+  const token = localStorage.getItem("carvion-key");
   if (token) {
     try {
       const decoded = jwtDecode(token);
@@ -36,11 +36,11 @@ function autoRedirectBasedOnToken(navigate) {
             return;
         }
       } else {
-        localStorage.removeItem("token");
+        localStorage.removeItem("carvion-key");
         navigate("/");
       }
     } catch (e) {
-      localStorage.removeItem("token");
+      localStorage.removeItem("carvion-key");
       navigate("/");
     }
   } else {
@@ -107,7 +107,7 @@ const LoginForm = () => {
         throw new Error(data.message || "Login failed");
       }
 
-      localStorage.setItem("token", data.token);
+      localStorage.setItem("carvion-key", data.token);
 
       autoRedirectBasedOnToken(navigate);
 
@@ -136,14 +136,18 @@ const LoginForm = () => {
 
     fetchVisitorCount();
   }, []);
-return(
+  return (
     <div className="flex items-center justify-center min-h-screen bg-[#F4F5F7] font-sans px-4">
       <div className="bg-white rounded-[32px] p-10 md:p-14 shadow-xl w-full max-w-[550px] flex flex-col relative">
         <div className="flex justify-center mb-8">
-           <img src={logo} alt="Logo" className="w-48" />
+          <img src={logo} alt="Logo" className="w-48" />
         </div>
-        <h2 className="text-3xl font-bold text-gray-800 text-center mb-2">Welcome Back</h2>
-        <p className="text-gray-500 text-center mb-8">Login to your account to continue</p>
+        <h2 className="text-3xl font-bold text-gray-800 text-center mb-2">
+          Welcome Back
+        </h2>
+        <p className="text-gray-500 text-center mb-8">
+          Login to your account to continue
+        </p>
 
         <form className="login-form flex flex-col gap-5" onSubmit={handleLogin}>
           <div className="email flex flex-col">
@@ -161,7 +165,10 @@ return(
           </div>
 
           <div className="password flex flex-col relative">
-            <label htmlFor="password" className="font-semibold text-gray-700 mb-2">
+            <label
+              htmlFor="password"
+              className="font-semibold text-gray-700 mb-2"
+            >
               Password
             </label>
             <input
@@ -195,9 +202,15 @@ return(
             </Link>
           </div>
 
-          {error && <p className="text-red-500 text-sm font-medium text-center">{error}</p>}
+          {error && (
+            <p className="text-red-500 text-sm font-medium text-center">
+              {error}
+            </p>
+          )}
           {success && (
-            <p className="text-green-500 text-sm font-medium text-center">{success}</p>
+            <p className="text-green-500 text-sm font-medium text-center">
+              {success}
+            </p>
           )}
 
           <button
@@ -211,7 +224,9 @@ return(
           <p className="w-full mt-6 text-center text-[15px] text-gray-500">
             Don't have an account?{" "}
             <Link to="/signup">
-              <span className="text-blue-600 hover:text-blue-700 font-bold cursor-pointer transition-colors">Sign Up</span>
+              <span className="text-blue-600 hover:text-blue-700 font-bold cursor-pointer transition-colors">
+                Sign Up
+              </span>
             </Link>
           </p>
         </form>

@@ -15,11 +15,11 @@ const EmployerDashboard = () => {
   const [activeTab, setActiveTab] = useState("dashboard");
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem("carvion-key");
     if (token) {
       try {
         const decoded = jwtDecode(token);
-        if(decoded.email) setEmail(decoded.email.split('@')[0]);
+        if (decoded.email) setEmail(decoded.email.split("@")[0]);
       } catch (err) {
         console.error("Invalid token", err);
       }
@@ -28,20 +28,26 @@ const EmployerDashboard = () => {
 
   const renderContent = () => {
     switch (activeTab) {
-      case "dashboard": return <DashboardOverview />;
-      case "jobs": return <JobsTab />;
-      case "applications": return <ApplicationsTab />;
-      case "interviews": return <InterviewsTab />;
-      case "settings": return <SettingsTab />;
-      default: return <DashboardOverview />;
+      case "dashboard":
+        return <DashboardOverview />;
+      case "jobs":
+        return <JobsTab />;
+      case "applications":
+        return <ApplicationsTab />;
+      case "interviews":
+        return <InterviewsTab />;
+      case "settings":
+        return <SettingsTab />;
+      default:
+        return <DashboardOverview />;
     }
   };
 
   const sidebarItems = [
-    { id: 'jobs', icon: FilePlus, label: 'Jobs' },
-    { id: 'applications', icon: Users, label: 'Applications' },
-    { id: 'interviews', icon: Calendar, label: 'Interviews' },
-    { id: 'settings', icon: Settings, label: 'Settings' }
+    { id: "jobs", icon: FilePlus, label: "Jobs" },
+    { id: "applications", icon: Users, label: "Applications" },
+    { id: "interviews", icon: Calendar, label: "Interviews" },
+    { id: "settings", icon: Settings, label: "Settings" },
   ];
 
   return (

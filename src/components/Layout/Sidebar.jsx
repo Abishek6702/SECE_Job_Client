@@ -1,4 +1,3 @@
-
 import { LayoutDashboard, LogOut } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
@@ -6,7 +5,7 @@ const Sidebar = ({ activeTab, setActiveTab, sidebarItems }) => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    localStorage.removeItem("token");
+    localStorage.removeItem("carvion-key");
     navigate("/");
   };
 
@@ -19,10 +18,8 @@ const Sidebar = ({ activeTab, setActiveTab, sidebarItems }) => {
 
   return (
     <div className="w-20 h-[calc(100vh-2rem)] bg-[#2e3137] flex flex-col items-center py-6 rounded-2xl ml-4 my-4 shadow-xl relative z-10 shrink-0">
-
       {/* Top Icons */}
       <div className="flex flex-col items-center gap-4">
-        
         {/* Dashboard */}
         <div
           className={iconButtonClass(activeTab === "dashboard")}
@@ -58,7 +55,6 @@ const Sidebar = ({ activeTab, setActiveTab, sidebarItems }) => {
       >
         <LogOut size={24} strokeWidth={2} />
       </div>
-
     </div>
   );
 };

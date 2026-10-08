@@ -1,7 +1,7 @@
 import { jwtDecode } from "jwt-decode";
 
 export function autoRedirectBasedOnToken(navigate) {
-  const token = localStorage.getItem("token");
+  const token = localStorage.getItem("carvion-key");
   if (token) {
     try {
       const decoded = jwtDecode(token);
@@ -25,17 +25,17 @@ export function autoRedirectBasedOnToken(navigate) {
           case "employer":
             navigate("/employer-dashboard", { replace: true });
             return;
-         
+
           default:
             navigate("/", { replace: true });
             return;
         }
       } else {
-        localStorage.removeItem("token");
+        localStorage.removeItem("carvion-key");
       }
     } catch (error) {
       console.error(error);
-      localStorage.removeItem("token");
+      localStorage.removeItem("carvion-key");
     }
   }
 }

@@ -9,7 +9,7 @@ export const AppProvider = ({ children }) => {
   //  Get userId  from token
   const getUserIdFromToken = () => {
     try {
-      const token = localStorage.getItem("token");
+      const token = localStorage.getItem("carvion-key");
       if (token) {
         const decoded = jwtDecode(token);
         console.log("Decoded token:", decoded);

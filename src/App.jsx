@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 
-// Common Components
+// UI Components
 import { ToastContainer } from "react-toastify";
 
 // Protections
@@ -18,8 +18,11 @@ import AdminDashboard from "./pages/Dashboards/AdminDashboard";
 import UserDashboard from "./pages/Dashboards/UserDashboard";
 import EmployerDashboard from "./pages/Dashboards/EmployerDashboard";
 
-function App() {
+// Common Pages
+import OnboardingForm from "./pages/Common/OnboardingForm";
 
+
+function App() {
   return (
     <>
       <ToastContainer position="top-right" autoClose={1500} />
@@ -31,7 +34,9 @@ function App() {
         <Route path="/verify-otp" element={<VerifyOtp />} />
         <Route path="/reset-password" element={<ResetPassword />} />
         <Route path="/signup" element={<SignupForm />} />
+        <Route path="/onbordingform" element={<OnboardingForm />} />
 
+        {/* Protected Routes */}
         <Route
           path="/employer-dashboard/*"
           element={

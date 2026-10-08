@@ -1,5 +1,12 @@
 import { useEffect, useState } from "react";
-import { Activity, Users, Briefcase, Building2, MessageSquare, Layers } from "lucide-react";
+import {
+  Activity,
+  Users,
+  Briefcase,
+  Building2,
+  MessageSquare,
+  Layers,
+} from "lucide-react";
 import { jwtDecode } from "jwt-decode";
 import DashboardLayout from "../../components/Layout/DashboardLayout";
 
@@ -12,17 +19,16 @@ import CompaniesTab from "./UserDashboard/CompaniesTab";
 import MessagesTab from "./UserDashboard/MessagesTab";
 import ServicesTab from "./UserDashboard/ServicesTab";
 
-
 const UserDashboard = () => {
   const [userEmail, setUserEmail] = useState("John Doe");
   const [activeTab, setActiveTab] = useState("dashboard");
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem("carvion-key");
     if (token) {
       try {
         const decoded = jwtDecode(token);
-        if(decoded.email) setUserEmail(decoded.email.split('@')[0]);
+        if (decoded.email) setUserEmail(decoded.email.split("@")[0]);
       } catch (error) {
         console.error("Failed to decode token:", error);
       }
@@ -31,25 +37,33 @@ const UserDashboard = () => {
 
   const renderContent = () => {
     switch (activeTab) {
-      case "dashboard": return <DashboardOverview userEmail={userEmail} />;
-      case "feeds": return <FeedsTab />;
-      case "network": return <NetworkTab />;
-      case "jobs": return <JobsTab />;
-      case "companies": return <CompaniesTab />;
-      case "messages": return <MessagesTab />;
-      case "services": return <ServicesTab />;
+      case "dashboard":
+        return <DashboardOverview userEmail={userEmail} />;
+      case "feeds":
+        return <FeedsTab />;
+      case "network":
+        return <NetworkTab />;
+      case "jobs":
+        return <JobsTab />;
+      case "companies":
+        return <CompaniesTab />;
+      case "messages":
+        return <MessagesTab />;
+      case "services":
+        return <ServicesTab />;
       // case "settings": return <SettingsTab />;
-      default: return <DashboardOverview userEmail={userEmail} />;
+      default:
+        return <DashboardOverview userEmail={userEmail} />;
     }
   };
 
   const sidebarItems = [
-    { id: 'feeds', icon: Activity, label: 'Feeds' },
-    { id: 'network', icon: Users, label: 'Network' },
-    { id: 'jobs', icon: Briefcase, label: 'Jobs' },
-    { id: 'companies', icon: Building2, label: 'Companies' },
-    { id: 'messages', icon: MessageSquare, label: 'Messages' },
-    { id: 'services', icon: Layers, label: 'Services' },
+    { id: "feeds", icon: Activity, label: "Feeds" },
+    { id: "network", icon: Users, label: "Network" },
+    { id: "jobs", icon: Briefcase, label: "Jobs" },
+    { id: "companies", icon: Building2, label: "Companies" },
+    { id: "messages", icon: MessageSquare, label: "Messages" },
+    { id: "services", icon: Layers, label: "Services" },
     // { id: 'settings', icon: Settings, label: 'Settings' }
   ];
 
