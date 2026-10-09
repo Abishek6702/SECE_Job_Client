@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Users, CheckSquare, FileText } from "lucide-react";
 import DashboardLayout from "../../components/Layout/DashboardLayout";
 
@@ -9,7 +10,18 @@ import EmployerTab from "./AdminDashboard/EmployerTab";
 import ReportsTab from "./AdminDashboard/ReportsTab";
 
 const AdminDashboard = () => {
-  const [activeTab, setActiveTab] = useState("dashboard");
+  const location = useLocation();
+  const navigate = useNavigate();
+  const pathParts = location.pathname.split("/");
+  const activeTab = pathParts[2] || "dashboard";
+
+  const handleTabChange = (tabId) => {
+    if (tabId === "dashboard") {
+      navigate("/admin-dashboard");
+    } else {
+      navigate(`/admin-dashboard/${tabId}`);
+    }
+  };
 
   const renderContent = () => {
     switch (activeTab) {
@@ -32,7 +44,7 @@ const AdminDashboard = () => {
       <DashboardLayout
         sidebarItems={sidebarItems}
         activeTab={activeTab}
-        setActiveTab={setActiveTab}
+        setActiveTab={handleTabChange}
         navTitle="Finance Admin"
         userName="System Admin"
         userRole="Admin"

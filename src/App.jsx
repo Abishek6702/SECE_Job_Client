@@ -47,7 +47,7 @@ function App() {
         />
 
         <Route
-          path="/admin-dashboard"
+          path="/admin-dashboard/*"
           element={
             <ProtectedRoute>
               <AdminDashboard />
@@ -56,7 +56,7 @@ function App() {
         />
 
         <Route
-          path="/employee-dashboard"
+          path="/employee-dashboard/*"
           element={
             <ProtectedRoute>
               <UserDashboard />

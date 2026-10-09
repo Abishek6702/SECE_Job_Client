@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import {
   Activity,
   Users,
@@ -21,7 +22,19 @@ import ServicesTab from "./UserDashboard/ServicesTab";
 
 const UserDashboard = () => {
   const [userEmail, setUserEmail] = useState("John Doe");
-  const [activeTab, setActiveTab] = useState("dashboard");
+
+  const location = useLocation();
+  const navigate = useNavigate();
+  const pathParts = location.pathname.split("/");
+  const activeTab = pathParts[2] || "dashboard";
+
+  const handleTabChange = (tabId) => {
+    if (tabId === "dashboard") {
+      navigate("/employee-dashboard");
+    } else {
+      navigate(`/employee-dashboard/${tabId}`);
+    }
+  };
 
   useEffect(() => {
     const token = localStorage.getItem("carvion-key");
@@ -72,7 +85,7 @@ const UserDashboard = () => {
       <DashboardLayout
         sidebarItems={sidebarItems}
         activeTab={activeTab}
-        setActiveTab={setActiveTab}
+        setActiveTab={handleTabChange}
         navTitle="Finance Employee"
         userName={userEmail}
         userRole="Employee"

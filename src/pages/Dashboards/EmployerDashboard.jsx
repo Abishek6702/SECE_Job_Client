@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import { FilePlus, Users, Calendar, Settings } from "lucide-react";
 import { jwtDecode } from "jwt-decode";
 import DashboardLayout from "../../components/Layout/DashboardLayout";
@@ -12,7 +13,19 @@ import SettingsTab from "./EmployerDashboard/SettingsTab";
 
 const EmployerDashboard = () => {
   const [email, setEmail] = useState("Employer");
-  const [activeTab, setActiveTab] = useState("dashboard");
+
+  const location = useLocation();
+  const navigate = useNavigate();
+  const pathParts = location.pathname.split("/");
+  const activeTab = pathParts[2] || "dashboard";
+
+  const handleTabChange = (tabId) => {
+    if (tabId === "dashboard") {
+      navigate("/employer-dashboard");
+    } else {
+      navigate(`/employer-dashboard/${tabId}`);
+    }
+  };
 
   useEffect(() => {
     const token = localStorage.getItem("carvion-key");
@@ -54,7 +67,7 @@ const EmployerDashboard = () => {
     <DashboardLayout
       sidebarItems={sidebarItems}
       activeTab={activeTab}
-      setActiveTab={setActiveTab}
+      setActiveTab={handleTabChange}
       navTitle="Finance Employer"
       userName={email}
       userRole="Employer"
