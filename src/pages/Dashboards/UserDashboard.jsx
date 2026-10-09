@@ -18,7 +18,6 @@ import NetworkTab from "./UserDashboard/NetworkTab";
 import JobsTab from "./UserDashboard/JobsTab";
 import CompaniesTab from "./UserDashboard/CompaniesTab";
 import MessagesTab from "./UserDashboard/MessagesTab";
-import ServicesTab from "./UserDashboard/ServicesTab";
 
 const UserDashboard = () => {
   const [userEmail, setUserEmail] = useState("John Doe");
@@ -62,9 +61,7 @@ const UserDashboard = () => {
         return <CompaniesTab />;
       case "messages":
         return <MessagesTab />;
-      case "services":
-        return <ServicesTab />;
-      // case "settings": return <SettingsTab />;
+     
       default:
         return <DashboardOverview userEmail={userEmail} />;
     }
@@ -75,8 +72,6 @@ const UserDashboard = () => {
     { id: "network", icon: Users, label: "Network" },
     { id: "jobs", icon: Briefcase, label: "Jobs" },
     { id: "companies", icon: Building2, label: "Companies" },
-    { id: "messages", icon: MessageSquare, label: "Messages" },
-    { id: "services", icon: Layers, label: "Services" },
     // { id: 'settings', icon: Settings, label: 'Settings' }
   ];
 
